@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Student Management System</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Login</h1>
+    <div class="login-card">
 
-    <form>
+        <div class="login-header">
+            <h1>Welcome Back</h1>
+            <p>Sign in to Student Management System</p>
+        </div>
 
-        <p>
-            <input type="text" name="username" 
-                   placeholder="Username or Email"
-                   size="30">
-        </p>
+        <form method="post" action="login.php">
 
-        <p>
-            <input type="password" name="password" 
-                   placeholder="Password"
-                   size="30">
-        </p>
+            <div class="field">
+                <label for="username">Username or Email</label>
+                <input type="text" id="username" name="username"
+                       placeholder="Enter your username or email"
+                       autocomplete="username" required>
+            </div>
 
-        <p>
-            <input type="checkbox" name="remember">
-            Remember me on this device
-        </p>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Enter your password"
+                       autocomplete="current-password" required>
+            </div>
 
-        <p>
-            <input type="submit" value="Login">
-        </p>
+            <div class="options">
+                <label class="remember">
+                    <input type="checkbox" name="remember">
+                    Remember me on this device
+                </label>
+            </div>
 
-        <p>
-            Forgot your password?
-            <a href="#">Click here to reset it.</a>
-        </p>
+            <button type="submit">Login</button>
 
-    </form>
+            <p class="forgot">
+                Forgot your password?
+                <a href="#">Click here to reset it.</a>
+            </p>
+
+        </form>
+
+    </div>
 
 </body>
 </html>
