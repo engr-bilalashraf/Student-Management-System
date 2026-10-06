@@ -6,7 +6,7 @@
     <title>Login | Student Management System</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
+    
 <body>
 
     <div class="login-card">
