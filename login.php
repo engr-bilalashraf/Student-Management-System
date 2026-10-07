@@ -1,3 +1,58 @@
+
+<?php 
+
+session_start();
+
+require_once "db/db.php"; 
+
+$error = ""; 
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") 
+{ 
+
+$username = trim($_POST["username"]); 
+$password = $_POST["password"]; 
+
+if (empty($username) || empty($password)) 
+{ 
+
+$error = "Username and password are required."; 
+
+} 
+else 
+{ 
+
+$sql = "SELECT id, username, password FROM users WHERE username = ?"; 
+$stmt = mysqli_prepare($conn, $sql); 
+mysqli_stmt_bind_param($stmt, "s", $username); mysqli_stmt_execute($stmt); 
+$result = mysqli_stmt_get_result($stmt); 
+
+if (mysqli_num_rows($result) === 1) 
+{ 
+$user = mysqli_fetch_assoc($result); 
+if (password_verify($password, $user["password"])) 
+{ 
+
+$_SESSION["user_id"] = $user["id"]; 
+$_SESSION["username"] = $user["username"]; 
+
+header("Location: dashboard.php"); 
+exit(); 
+} 
+else 
+{ 
+$error = "Invalid username or password."; 
+}
+} 
+else 
+{ 
+$error = "Invalid username or password."; 
+} 
+mysqli_stmt_close($stmt); 
+} 
+} 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +71,9 @@
             <p>Sign in to Student Management System</p>
         </div>
 
-        <form method="post" action="login.php">
+         <?php if (!empty($error)): ?> <p style="color: red;"> <?php echo htmlspecialchars($error); ?> </p> <?php endif; ?>
+
+        <form method="POST" action="">
 
             <div class="field">
                 <label for="username">Username or Email</label>
