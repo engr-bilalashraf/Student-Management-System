@@ -119,3 +119,63 @@ button[type="submit"]:active {
 .forgot a:hover {
     text-decoration: underline;
 }
+
+/* ===== Signup page extras ===== */
+
+.input-icon {
+    position: relative;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 15px;
+    color: #9ca3af;
+    pointer-events: none;
+    transition: color 0.2s;
+}
+
+.input-icon:focus-within i {
+    color: #2563eb;
+}
+
+.input-icon input,
+.input-icon select {
+    padding-left: 42px;
+}
+
+.field select {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    font-size: 15px;
+    color: #111827;
+    background: #f9fafb;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.field select:focus {
+    outline: none;
+    background: #ffffff;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+#message {
+    margin: 16px 0 0 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#message.error {
+    color: #dc2626;
+}
+
+#message.success {
+    color: #16a34a;
+}
