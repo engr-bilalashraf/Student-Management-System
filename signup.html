@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fffef0;
+            font-family: Arial, sans-serif;
+        }
+
+        .signup-container {
+            width: 100%;
+            max-width: 680px;
+            padding: 25px 15px;
+        }
+
+        h1 {
+            margin: 0 0 45px;
+            font-family: Georgia, serif;
+            font-size: 48px;
+            color: #111;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+
+        .input-group i {
+            width: 34px;
+            font-size: 34px;
+            color: #111;
+            text-align: center;
+        }
+
+        .input-group input {
+            width: 100%;
+            max-width: 450px;
+            height: 53px;
+            padding: 8px;
+            border: 2px solid #aaa;
+            border-radius: 2px;
+            background: transparent;
+            font-size: 25px;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: #555;
+        }
+
+        input::placeholder {
+            color: #999;
+        }
+
+        .options {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .options label {
+            font-size: 23px;
+        }
+
+        select {
+            height: 48px;
+            padding: 5px 10px;
+            border: 2px solid #aaa;
+            background: transparent;
+            font-size: 22px;
+        }
+
+        button {
+            padding: 8px 13px;
+            border: 2px solid #aaa;
+            border-radius: 5px;
+            background: linear-gradient(white, #e8e8e8);
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ddd;
+        }
+
+        #message {
+            margin-top: 12px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #c62828;
+        }
+
+        .success {
+            color: #16803c;
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 38px;
+                margin-bottom: 30px;
+            }
+
+            .input-group {
+                gap: 8px;
+
+            .input-group i {
+                width: 28px;
+                font-size: 25px;
+            }
+
+
+            .input-group input {
+                min-width: 0;
+
+                height: 46px;
+                font-size: 18px;
+            }
+
+
+            .options label,
+            select,
+            button {
+                font-size: 18px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="signup-container">
+
+        <h1>SIGN UP@</h1>
+
+        <form id="signupForm">
+
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text"
+
+                       id="username"
+                       placeholder="Username"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email"
+                       id="email"
+                       placeholder="Email"
+                       required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password"
+                       id="password"
+                       placeholder="Password"
+                       required
+                       minlength="6">
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password"
+                       id="confirmPassword"
+                       placeholder="Confirm password"
+                       required>
+            </div>
+
+            <div class="options">
+                <label for="gender">Gender</label>
+
+                <select id="gender" required>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <button type="submit">Sign up@</button>
+            </div>
+
+            <p id="message" aria-live="polite"></p>
+
+        </form>
+
+    </div>
+
+    <script>
+        const form = document.getElementById("signupForm");
+        const password = document.getElementById("password");
+        const confirmPassword = document.getElementById("confirmPassword");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            message.className = "";
+
+            if (password.value !== confirmPassword.value) {
+                message.textContent = "Passwords do not match";
+                message.className = "error";
+                return;
+            }
+
+            message.textContent = "Signup form submitted successfully!";
+            message.className = "success";
+        });
+    </script>
+
+</body>
+</html>
